@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Exo+2:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import "nullindex";
+
+
+html {
+   scroll-behavior: smooth;
+}
+body {
+   margin: 0 auto;
+   max-width: 100%;
+   max-height: 100%;
+   font-family: 'Exo 2';
+   font-size: 24px;
+   line-height: 30px;
+}
+.container {
+   margin: 0 auto;
+   padding: 0 15px;
+   max-width: 700px;
+}
+
+.form {
+   margin: 25px auto;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+   h1 {
+      margin: 0 auto 15px;
+      flex: 0 1 100%;
+      text-align: center;
+   }
+   form {
+      max-width: 100%;
+      display: flex;
+      .__expenses {
+         flex: 1 1 100%;
+         padding: 0 10px;
+         max-width: 70%;
+         font-weight: 200;
+         font-size: 24px;
+         line-height: 44px;
+         border: 1px solid black;
+         border-right: none;
+         border-radius: 15px 0 0 15px;
+         &:-webkit-autofill {
+            font-size: 24px;
+            box-shadow: inset 0 0 0 50px white;
+            -webkit-box-shadow: inset 0 0 0 50px white;
+            -webkit-text-fill-color: black;
+         }
+      }
+      .__btn {
+         padding: 0 10px;
+         font-weight: 400;
+         font-size: 24px;
+         line-height: 44px;
+         background-color: #fff;
+         border: 1px solid black;
+         border-left: none;
+         border-radius: 0 15px 15px 0;
+         transition: all .3s ease;
+         &:hover {
+            background-color: rgba(128, 128, 128, .3);
+         }
+         @media (max-width: 459px) {
+            width: 100%;
+            height: 46px;
+            font-size: 0px;
+            background: url('../../Img/icon/add.png') center center / 35px 35px  no-repeat;
+            &:hover {
+               background-color: transparent;
+            }
+         }
+      }
+   }
+
+}
+.data {
+   display: flex;
+   .__info {
+      visibility: hidden;
+      opacity: 0;
+      flex: 0 1 50%;
+      text-align: center;
+      transition: all .3s ease;
+      &.js-active {
+         visibility: visible;
+         opacity: 1;
+      }
+      h2 {
+         margin: 0 0 15px 0;
+      }
+   }
+   .__history {
+      visibility: hidden;
+      opacity: 0;
+      flex: 0 1 50%;
+      text-align: center;
+      transition: all .3s ease;
+      &.js-active {
+         visibility: visible;
+         opacity: 1;
+      }
+      h2 {
+         margin: 0 0 15px 0;
+      }
+      li {
+         list-style-position:inside;
+      }
+   }
+}
+
+
+
+
+
