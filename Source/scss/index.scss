@@ -10,14 +10,15 @@ body {
    max-width: 100%;
    max-height: 100%;
    font-family: 'Exo 2';
-   font-size: 24px;
+   font-size: 20px;
    line-height: 30px;
 }
 .container {
    margin: 0 auto;
    padding: 0 15px;
-   max-width: 700px;
+   max-width: 390px;
 }
+
 
 .form {
    margin: 25px auto;
@@ -28,20 +29,28 @@ body {
    h1 {
       margin: 0 auto 15px;
       flex: 0 1 100%;
-      text-align: center;
    }
-   form {
-      max-width: 100%;
+   .form__limit {
+      max-width: 360px;
+      width: 100%;
       display: flex;
+      justify-content: center;
+      position: absolute;
+      top: 70px;
+      opacity: 1;
+      visibility: visible;
+      transition: all .5s ease;
+      &.js-closed {
+         opacity: 0;
+         visibility: hidden;
+      }
       label {
          flex: 1 1 100%;
-         max-width: 70%;
-         .__expenses {
-            flex: 1 1 100%;
+         .__limit_input {
             padding: 0 10px;
-            max-width: 100%;
+            width: 100%;
             font-weight: 200;
-            font-size: 24px;
+            font-size: 20px;
             line-height: 44px;
             border: 1px solid black;
             border-right: none;
@@ -59,54 +68,114 @@ body {
             }
          }
       }
-
-      .__btn {
+      .__btn_limit {
+         padding: 0 10px;
+         width: 50px;
+         background: url('../../Img/icon/done.png') center center / 40px 40px no-repeat ,#fff;
+         border: 1px solid black;
+         border-left: none;
+         border-radius: 0 15px 15px 0;
+         transition: all .3s ease;
+      }
+   }
+   .__expenses {
+      max-width: 100%;
+      display: flex;
+      position: absolute;
+      top: 70px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .5s ease;
+      &.js-open {
+         opacity: 1;
+         visibility: visible;
+      }
+      label {
+         .__expenses_input {
+            flex: 1 1 100%;
+            padding: 0 10px;
+            max-width: 100%;
+            font-weight: 200;
+            font-size: 20px;
+            line-height: 44px;
+            border: 1px solid black;
+            border-right: none;
+            border-radius: 15px 0 0 15px;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+               display: none;
+               -webkit-appearance: none;
+            }
+            &:-webkit-autofill {
+               font-size: 24px;
+               box-shadow: inset 0 0 0 50px white;
+               -webkit-box-shadow: inset 0 0 0 50px white;
+               -webkit-text-fill-color: black;
+            }
+         }
+      }
+      .__btn_expenses {
          padding: 0 10px;
          font-weight: 400;
-         font-size: 24px;
+         font-size: 20px;
          line-height: 44px;
          background-color: #fff;
          border: 1px solid black;
          border-left: none;
          border-radius: 0 15px 15px 0;
-         transition: all .3s ease;
-         &:hover {
-            background-color: rgba(128, 128, 128, .3);
-         }
          @media (max-width: 459px) {
-            width: 100%;
+            width: 50px;
             height: 46px;
             font-size: 0px;
             background: url('../../Img/icon/add.png') center center / 35px 35px  no-repeat;
-            &:hover {
-               background-color: transparent;
-            }
          }
       }
    }
-
 }
+
 .data {
+   margin: 65px 0 0 0;
    display: flex;
    .__info {
-      visibility: hidden;
-      opacity: 0;
       flex: 0 1 50%;
-      text-align: center;
-      transition: all .3s ease;
-      &.js-active {
-         visibility: visible;
-         opacity: 1;
+      .info__limit {
+         visibility: hidden;
+         opacity: 0;
+         transition: all .3s ease;
+         &.js-active {
+            visibility: visible;
+            opacity: 1;
+         }
+         .js-info__limit-change {
+            width: 23px;
+            height: 23px;
+            cursor: pointer;
+            position: relative;
+            top: 3px;
+            left: 5px;
+            display: inline-block;
+            background: url("../../Img/icon/change.svg") center bottom / 100% no-repeat ;
+         }
+      }
+      .info__sum {
+         visibility: hidden;
+         opacity: 0;
+         transition: all .3s ease;
+         &.js-active {
+            visibility: visible;
+            opacity: 1;
+         }
       }
       h2 {
          margin: 0 0 15px 0;
       }
    }
    .__history {
+      padding: 0 0 0 30px;
       visibility: hidden;
       opacity: 0;
       flex: 0 1 50%;
-      text-align: center;
+
       transition: all .3s ease;
       &.js-active {
          visibility: visible;
