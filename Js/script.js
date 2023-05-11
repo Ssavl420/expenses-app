@@ -2,7 +2,8 @@ const inputFormNode = document.querySelector('[data-find="expensesInput"]');
 const inputBtn = document.querySelector('[data-find="expensesBtn"]');
 const historyNode = document.querySelector('[data-find="history"]')
 const form = document.querySelector('.form');
-const sumNode = document.querySelector('[data-find="sum"]')
+const sumNode = document.querySelector('[data-find="sum"]');
+
 let expenses = [];
 
 form.addEventListener('submit', function (e) {
@@ -17,7 +18,7 @@ form.addEventListener('submit', function (e) {
   const info = document.querySelector('.__info');
   info.classList.add('js-active');
 
-  const expense = +inputFormNode.value;
+  const expense = +inputFormNode.value.replace("," , ".");
   expenses.push(expense);
   
   inputFormNode.value = '';

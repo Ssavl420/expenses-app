@@ -107,10 +107,14 @@ body {
   max-width: 100%;
   display: flex;
 }
-.form form .__expenses {
+.form form label {
+  flex: 1 1 100%;
+  max-width: 70%;
+}
+.form form label .__expenses {
   flex: 1 1 100%;
   padding: 0 10px;
-  max-width: 70%;
+  max-width: 100%;
   font-weight: 200;
   font-size: 24px;
   line-height: 44px;
@@ -118,7 +122,11 @@ body {
   border-right: none;
   border-radius: 15px 0 0 15px;
 }
-.form form .__expenses:-webkit-autofill {
+.form form label .__expenses::-webkit-outer-spin-button, .form form label .__expenses::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+}
+.form form label .__expenses:-webkit-autofill {
   font-size: 24px;
   box-shadow: inset 0 0 0 50px white;
   -webkit-box-shadow: inset 0 0 0 50px white;
