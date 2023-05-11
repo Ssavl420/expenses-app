@@ -195,10 +195,10 @@ body {
 }
 @media (max-width: 459px) {
   .form .__expenses .__btn_expenses {
-    width: 50px;
+    width: 111px;
     height: 46px;
     font-size: 0px;
-    background: url("../../Img/icon/add.png") center center/35px 35px no-repeat;
+    background: url("../../Img/icon/add.png") 80% center/35px 35px no-repeat;
   }
 }
 
