@@ -243,6 +243,7 @@ body {
 .data .__info .reset__btn {
   width: 95%;
   background: white;
+  color: black;
   font-size: 16px;
   line-height: 35px;
   border: 1px solid black;

@@ -20,6 +20,7 @@ formLimit.addEventListener('submit', function (e) {
   const limit = +inputFormLimitNode.value.replace("," , ".");
   formLimit.classList.add("js-closed");
   formExpenses.classList.add("js-open");
+  inputFormExpensesNode.focus();
 
   const limInfo = document.querySelector('.info__limit');
   limInfo.classList.add('js-active');
@@ -33,7 +34,6 @@ formLimit.addEventListener('submit', function (e) {
   // ----------------------------------
   formExpenses.addEventListener('submit', function (e) {
     e.preventDefault();
-
     resetBtn.addEventListener('click', function () {
       expenses.length = 0;
 
