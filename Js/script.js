@@ -8,6 +8,7 @@ const formExpenses = document.querySelector('[data-find="form-expenses"]');
 const formLimit = document.querySelector('[data-find="form-limit"]');
 const sumNode = document.querySelector('[data-find="sum"]');
 const limitNode = document.querySelector('[data-find="limit"]');
+const balanceNode = document.querySelector('[data-find="balance"]');
 // let limit = +inputFormLimitNode.value.replace("," , ".");
 
 let expenses = [];
@@ -41,6 +42,7 @@ formLimit.addEventListener('submit', function (e) {
       let sum = 0;
       historyNode.innerHTML = " - ";
       sumNode.innerText = (sum + ' \u20bd');
+      balanceNode.innerText = (limit + ' \u20bd');
       
     });
 
@@ -54,7 +56,9 @@ formLimit.addEventListener('submit', function (e) {
     resetBtn.classList.add('js-active');
     
     const sumInfo = document.querySelector('.info__sum');
+    const balanceInfo = document.querySelector('.info__balance');
     sumInfo.classList.add('js-active');
+    balanceInfo.classList.add('js-active');
   
     const expense = +inputFormExpensesNode.value.replace("," , ".");
 
@@ -73,6 +77,8 @@ formLimit.addEventListener('submit', function (e) {
     historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
   
     sumNode.innerText = (sum.toFixed(2) + ' \u20bd');
+
+    balanceNode.innerHTML = (limit.toFixed(2) - sum.toFixed(2) + ' \u20bd');
 
     console.log(expenses);
 

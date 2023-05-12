@@ -157,7 +157,8 @@ body {
             background: url("../../Img/icon/change.svg") center bottom / 100% no-repeat ;
          }
       }
-      .info__sum {
+      .info__sum, 
+      .info__balance {
          visibility: hidden;
          opacity: 0;
          transition: all .3s ease;
