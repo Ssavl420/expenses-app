@@ -2,7 +2,8 @@ const inputFormLimitNode = document.querySelector('[data-find="limitInput"]');
 const inputFormExpensesNode = document.querySelector('[data-find="expensesInput"]');
 // const inputBtn = document.querySelector('[data-find="expensesBtn"]');
 const limitBtn = document.querySelector('[data-find="LimitBtn"]');
-const historyNode = document.querySelector('[data-find="history"]')
+const resetBtn = document.querySelector('[data-find="resetBtn"]');
+const historyNode = document.querySelector('[data-find="history"]');
 const formExpenses = document.querySelector('[data-find="form-expenses"]');
 const formLimit = document.querySelector('[data-find="form-limit"]');
 const sumNode = document.querySelector('[data-find="sum"]');
@@ -32,23 +33,38 @@ formLimit.addEventListener('submit', function (e) {
   // ----------------------------------
   formExpenses.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    resetBtn.addEventListener('click', function () {
+      expenses.length = 0;
+
+      let expensesListHTML = '';
+      let sum = 0;
+      historyNode.innerHTML = " - ";
+      sumNode.innerText = (sum + ' \u20bd');
+      
+    });
+
     if (!inputFormExpensesNode.value) {
       return;
     } 
-  
+    
     const history = document.querySelector('.__history');
     history.classList.add('js-active');
+
+    resetBtn.classList.add('js-active');
     
     const sumInfo = document.querySelector('.info__sum');
     sumInfo.classList.add('js-active');
   
     const expense = +inputFormExpensesNode.value.replace("," , ".");
+
     expenses.push(expense);
     
     inputFormExpensesNode.value = '';
   
     let expensesListHTML = '';
     let sum = 0;
+
     expenses.forEach(element => {
       expensesListHTML += `<li>${element} &#8381</li>`;
       sum += element;
@@ -56,9 +72,9 @@ formLimit.addEventListener('submit', function (e) {
     
     historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
   
-    sumNode.innerText = (sum + ' \u20bd');
+    sumNode.innerText = (sum.toFixed(2) + ' \u20bd');
 
-    console.log(expense)
+    console.log(expenses);
 
   });
 
@@ -67,6 +83,6 @@ formLimit.addEventListener('submit', function (e) {
     formLimit.classList.remove("js-closed");
     formExpenses.classList.remove("js-open");
     inputFormLimitNode.value = "";
-  })
+  });
   // -----------------------------------
 });

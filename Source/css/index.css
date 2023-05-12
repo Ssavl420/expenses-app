@@ -240,11 +240,27 @@ body {
 .data .__info h2 {
   margin: 0 0 15px 0;
 }
-.data .__history {
-  padding: 0 0 0 30px;
+.data .__info .reset__btn {
+  width: 95%;
+  background: transparent;
+  font-size: 16px;
+  line-height: 35px;
+  border: 1px solid black;
+  border-radius: 10px;
   visibility: hidden;
   opacity: 0;
+  transition: all 0.3s ease;
+}
+.data .__info .reset__btn.js-active {
+  visibility: visible;
+  opacity: 1;
+}
+.data .__history {
+  padding: 0 0 0 30px;
   flex: 0 1 50%;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
   transition: all 0.3s ease;
 }
 .data .__history.js-active {
