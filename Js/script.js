@@ -29,10 +29,10 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
 
   limitNode.innerText = (limit + ' \u20bd');
 
-  if (expenses.length = 0) {
-    balanceNode.innerHTML = (limit + ' \u20bd');
+  if (expenses.length === 0) {
+    balanceNode.innerText = (limit + ' \u20bd');
   } else {
-    balanceNode.innerHTML = (limit - sum + ' \u20bd')
+    balanceNode.innerText = (limit - sum.toFixed(2) + ' \u20bd')
   }
 
   inputFormExpensesNode.value = "";
@@ -48,7 +48,7 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
       let expensesListHTML = '';
       let sum = 0;
       historyNode.innerHTML = " - ";
-      sumNode.innerText = (sum + ' \u20bd');
+      sumNode.innerText = (sum.toFixed(2) + ' \u20bd');
       balanceNode.innerText = (limit + ' \u20bd');
       
     });
@@ -85,7 +85,7 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
   
     sumNode.innerText = (sum.toFixed(2) + ' \u20bd');
 
-    balanceNode.innerHTML = (limit.toFixed(2) - sum.toFixed(2) + ' \u20bd');
+    balanceNode.innerText = (limit - sum.toFixed(2) + ' \u20bd');
 
     console.log(expenses);
 
