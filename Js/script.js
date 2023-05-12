@@ -13,6 +13,7 @@ let expenses = [];
 let sum;
 let limit;
 
+
 formLimit.addEventListener('submit', function (e) {  // Функция задающая лимит трат.
   e.preventDefault();
   if (!inputFormLimitNode.value) {
@@ -32,7 +33,8 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
   if (expenses.length === 0) {
     balanceNode.innerText = (limit + ' \u20bd');
   } else {
-    balanceNode.innerText = (limit - sum.toFixed(2) + ' \u20bd')
+    let balanceN = limit - sum;
+    balanceNode.innerText = (+balanceN.toFixed(2) + ' \u20bd');
   }
 
   inputFormExpensesNode.value = "";
@@ -85,9 +87,10 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
   
     sumNode.innerText = (sum.toFixed(2) + ' \u20bd');
 
-    balanceNode.innerText = (limit - sum.toFixed(2) + ' \u20bd');
+    let balanceN = limit - sum;
+    balanceNode.innerText = (+balanceN.toFixed(2) + ' \u20bd');
 
-    console.log(expenses);
+    console.log(+balanceN.toFixed(2));
 
   });
 
