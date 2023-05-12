@@ -19,6 +19,7 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
   if (!inputFormLimitNode.value) {
     return;
   }
+  inputFormExpensesNode.value = "";
   limit = +inputFormLimitNode.value.replace("," , ".");
   formLimit.classList.add("js-closed");
   formExpenses.classList.add("js-open");
@@ -36,8 +37,6 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
     let balanceN = limit - sum;
     balanceNode.innerText = (+balanceN.toFixed(2) + ' \u20bd');
   }
-
-  inputFormExpensesNode.value = "";
 
   // ----------------------------------
   formExpenses.addEventListener('submit', function (e) {
