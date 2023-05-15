@@ -97,6 +97,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
 }
 .form h1 {
   margin: 0 auto 15px;
@@ -108,7 +109,7 @@ body {
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 70px;
+  top: 45px;
   opacity: 1;
   visibility: visible;
   transition: all 0.5s ease;
@@ -153,19 +154,21 @@ body {
   max-width: 100%;
   display: flex;
   position: absolute;
-  top: 115px;
+  top: 91px;
   opacity: 0;
   visibility: hidden;
+  transform: translate(0, -100%);
   transition: all 0.5s ease;
 }
 .form .__expenses.js-open {
+  transform: translate(0, 0);
   opacity: 1;
   visibility: visible;
 }
 .form .__expenses label .__expenses_input {
   flex: 1 1 100%;
   padding: 0 10px;
-  max-width: 100%;
+  width: 100%;
   font-weight: 200;
   font-size: 20px;
   line-height: 44px;
