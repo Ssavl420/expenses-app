@@ -1,5 +1,6 @@
 const inputFormLimitNode = document.querySelector('[data-find="limitInput"]');
 const inputFormExpensesNode = document.querySelector('[data-find="expensesInput"]');
+const inputFormCategoriesNode = document.querySelector('[data-find="category"]');
 const limitBtn = document.querySelector('[data-find="LimitBtn"]');
 const resetBtn = document.querySelector('[data-find="resetBtn"]');
 const historyNode = document.querySelector('[data-find="history"]');
@@ -11,11 +12,14 @@ const balanceNode = document.querySelector('[data-find="balance"]');
 
 
 let expenses = [];
-let category = [];
+let categories = [];
+let category;
+let thisCategory;
 let sum;
 let limit;
 let balanceN;
 let statusBalance;
+let categoryListHTML
 
 
 // Вывод статуса
@@ -28,6 +32,21 @@ function addStatus () {
   } if (sum >= limit) {
     statusBalance.style.backgroundColor = "red";
   }
+}
+
+// Получение категории
+function addCategory () {
+  category = inputFormCategoriesNode.value;
+  categories.push(category);
+  inputFormCategoriesNode.value = 'Выберите категорию:';
+
+  // thisCategory = categories.map();
+
+  // categoryListHTML = '';
+  // categories.forEach(element => {
+  //   categoryListHTML += `<p>${element}</p>`;
+  // });
+
 }
 
 
@@ -88,6 +107,9 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
     const expense = +inputFormExpensesNode.value.replace("," , ".");
 
     expenses.push(expense);
+    addCategory();
+    console.log(categories)
+    console.log(category)
     
     inputFormExpensesNode.value = '';
   
@@ -95,9 +117,18 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
     sum = 0;
 
     expenses.forEach(element => {
-      expensesListHTML += `<li>${element} &#8381</li>`;
+      // expensesListHTML += `<li>${element} &#8381</li>`;
       sum += element;
     });
+
+    for (let i = 0; i < expenses.length; i++) {
+      if (categories[i] === 'Выберите категорию:') {
+        expensesListHTML += `<li>${expenses[i]} &#8381</li>`;
+      } else {
+        expensesListHTML += `<li>${expenses[i]} &#8381 <br> ${categories[i]}</li>`
+      }
+    }
+
     
     historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
   

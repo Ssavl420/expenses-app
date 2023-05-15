@@ -131,10 +131,21 @@ body {
          }
       }
    }
+   .category {
+      margin: 55px 0 0 0;
+      padding: 0 10px;
+      width: 100%;
+      height: 46px;
+      font-family: "Exo 2";
+      font-size: 20px;
+      font-weight: 200;
+      line-height: 44px;
+      border: 1px solid black;
+      border-radius: 15px;
+   }
 }
 
 .data {
-   margin: 65px 0 0 0;
    display: flex;
    .__info {
       flex: 0 1 65%;
@@ -203,7 +214,7 @@ body {
    }
    .__history {
       padding: 0 0 0 20px;
-      flex: 0 1 40%;
+      flex: 0 1 50%;
       overflow: hidden;
       visibility: hidden;
       opacity: 0;
@@ -211,6 +222,10 @@ body {
       &.js-active {
          visibility: visible;
          opacity: 1;
+      }
+      ol {
+         font-size: 16px;
+         line-height: 20px;
       }
       h2 {
          margin: 0 0 15px 0;
