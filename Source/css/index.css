@@ -207,7 +207,7 @@ body {
   display: flex;
 }
 .data .__info {
-  flex: 0 1 50%;
+  flex: 0 1 65%;
 }
 .data .__info .info__limit {
   visibility: hidden;
@@ -239,10 +239,10 @@ body {
   visibility: visible;
   opacity: 1;
 }
-.data .__info h2 {
+.data h2 {
   margin: 0 0 15px 0;
 }
-.data .__info .reset__btn {
+.data .reset__btn {
   width: 95%;
   background: white;
   color: black;
@@ -255,13 +255,26 @@ body {
   opacity: 0;
   transition: all 0.3s ease;
 }
-.data .__info .reset__btn.js-active {
+.data .reset__btn.js-active {
   visibility: visible;
   opacity: 1;
 }
+.data .info__balance {
+  position: relative;
+}
+.data .info__balance .js-status {
+  display: block;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 10px;
+  left: -15px;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
 .data .__history {
-  padding: 0 0 0 30px;
-  flex: 0 1 50%;
+  padding: 0 0 0 20px;
+  flex: 0 1 40%;
   overflow: hidden;
   visibility: hidden;
   opacity: 0;

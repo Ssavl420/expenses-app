@@ -9,9 +9,26 @@ const sumNode = document.querySelector('[data-find="sum"]');
 const limitNode = document.querySelector('[data-find="limit"]');
 const balanceNode = document.querySelector('[data-find="balance"]');
 
+
 let expenses = [];
+let category = [];
 let sum;
 let limit;
+let balanceN;
+let statusBalance;
+
+
+// Вывод статуса
+function addStatus () {
+  statusBalance = document.querySelector('.js-status');
+  if (sum <= limit || sum === 0) {
+    statusBalance.style.backgroundColor = "#29aa18";
+  } if (sum >= (limit * 0.85)) {
+    statusBalance.style.backgroundColor = "orange";
+  } if (sum >= limit) {
+    statusBalance.style.backgroundColor = "red";
+  }
+}
 
 
 formLimit.addEventListener('submit', function (e) {  // Функция задающая лимит трат.
@@ -27,20 +44,23 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
   const limInfo = document.querySelector('.info__limit');
   limInfo.classList.add('js-active');
 
-  console.log(limit)
-
   limitNode.innerText = (limit + ' \u20bd');
 
   if (expenses.length === 0) {
     balanceNode.innerText = (limit + ' \u20bd');
   } else {
-    let balanceN = limit - sum;
+    balanceN = limit - sum;
     balanceNode.innerText = (+balanceN.toFixed(2) + ' \u20bd');
+    addStatus();
   }
 
-  // ----------------------------------
   formExpenses.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    if (!inputFormExpensesNode.value) {
+      return;
+    } 
+
     resetBtn.addEventListener('click', function () {
       resetBtn.classList.remove('js-active');
 
@@ -51,12 +71,9 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
       historyNode.innerHTML = " - ";
       sumNode.innerText = (sum.toFixed(2) + ' \u20bd');
       balanceNode.innerText = (limit + ' \u20bd');
-      
-    });
 
-    if (!inputFormExpensesNode.value) {
-      return;
-    } 
+      statusBalance.style.backgroundColor = "#29aa18";
+    });
     
     const history = document.querySelector('.__history');
     history.classList.add('js-active');
@@ -86,10 +103,10 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
   
     sumNode.innerText = (sum.toFixed(2) + ' \u20bd');
 
-    let balanceN = limit - sum;
+    balanceN = limit - sum;
     balanceNode.innerText = (+balanceN.toFixed(2) + ' \u20bd');
 
-    console.log(+balanceN.toFixed(2));
+    addStatus();
 
   });
 
@@ -97,7 +114,8 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
   limitChange.addEventListener('click', function () {
     formLimit.classList.remove("js-closed");
     formExpenses.classList.remove("js-open");
+    addStatus();
     inputFormLimitNode.value = "";
+
   });
-  // -----------------------------------
 });
