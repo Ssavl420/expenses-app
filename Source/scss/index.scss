@@ -140,12 +140,13 @@ body {
       padding: 0 10px;
       width: 100%;
       height: 46px;
-      background-color: #fff;
+      background: url('../../Img/icon/done.png') 99% 100% / 40px 40px no-repeat ,#fff;
       color: gray;
       font-family: "Exo 2";
       font-size: 20px;
       font-weight: 200;
       line-height: 44px;
+      appearance: none;
       border: 1px solid black;
       border-bottom: none;
       border-radius: 15px 15px 0 0;
