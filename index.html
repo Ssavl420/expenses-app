@@ -41,23 +41,23 @@
 
          <form data-find="form-limit" class="form__limit" autocomplete="off">
             <label title="Допустимы любые целые числа, также числа с десятыми и сотыми долями. Разделитель . или , ">
-               <input data-find="limitInput" class="__limit_input" type="number" min="1" step="0.01"
+               <input data-find="limitInput" class="limit__input" type="number" min="1" step="0.01"
                   pattern="^\d+(?:[\.,]\d{1,2})?$" placeholder="Укажите Ваш лимит" required>
             </label>
-            <button data-find="LimitBtn" class="__btn_limit" type="submit"></button>
+            <button data-find="LimitBtn" class="limit__btn" type="submit"></button>
          </form>
 
-         <form data-find="form-expenses" class="__expenses" autocomplete="off">
+         <form data-find="form-expenses" class="form__expenses" autocomplete="off">
             <label title="Допустимы любые целые числа, также числа с десятыми и сотыми долями. Разделитель . или , ">
-               <input data-find="expensesInput" class="__expenses_input" type="number" min="0.01" step="0.01"
+               <input data-find="expensesInput" class="expenses__input" type="number" min="0.01" step="0.01"
                   pattern="^\d+(?:[\.,]\d{1,2})?$" placeholder="Введите сумму" required>
             </label>
-            <button data-find="expensesBtn" class="__btn_expenses" type="submit">Добавить</button>
+            <button data-find="expensesBtn" class="expenses__btn" type="submit">Добавить</button>
          </form>
-         <select data-find="category" class="category" name="category" size="1">
+         <select data-find="category" class="form__category" name="category" size="1">
             <option selected disabled>Выберите категорию:</option>
             <option>Продукты</option>
-            <option>Кафе / ресторан</option>
+            <option>Ресторан</option>
             <option>Транспорт</option>
             <option>Здоровье</option>
             <option>Развлечения</option>
@@ -65,7 +65,7 @@
          </select>
       </div>
       <div class="data">
-         <div class="__info">
+         <div class="data__info">
             <h2 class="info__limit">Лимит: <span data-find="limit"></span>
                <div class="js-info__limit-change"></div>
             </h2>
@@ -75,7 +75,7 @@
             <h2 class="info__sum">Расход: <span data-find="sum"></span></h2>
             <button data-find="resetBtn" class="reset__btn" type="submit">Сбросить историю</button>
          </div>
-         <div class="__history">
+         <div class="data__history">
             <h2>История:</h2>
             <div data-find="history"></div>
          </div>

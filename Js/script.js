@@ -6,7 +6,6 @@ const resetBtn = document.querySelector('[data-find="resetBtn"]');
 const historyNode = document.querySelector('[data-find="history"]');
 const formExpenses = document.querySelector('[data-find="form-expenses"]');
 const formLimit = document.querySelector('[data-find="form-limit"]');
-const formCategory = document.querySelector('[data-find="category"]');
 const sumNode = document.querySelector('[data-find="sum"]');
 const limitNode = document.querySelector('[data-find="limit"]');
 const balanceNode = document.querySelector('[data-find="balance"]');
@@ -60,7 +59,7 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
   limit = +inputFormLimitNode.value.replace("," , ".");
   formLimit.classList.add("js-closed");
   formExpenses.classList.add("js-open");
-  formCategory.classList.add("js-open");
+  inputFormCategoriesNode.classList.add("js-open");
 
   const limInfo = document.querySelector('.info__limit');
   limInfo.classList.add('js-active');
@@ -97,7 +96,7 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
       statusBalance.style.backgroundColor = "#29aa18";
     });
     
-    const history = document.querySelector('.__history');
+    const history = document.querySelector('.data__history');
     history.classList.add('js-active');
 
     resetBtn.classList.add('js-active');
@@ -148,6 +147,7 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
   limitChange.addEventListener('click', function () {
     formLimit.classList.remove("js-closed");
     formExpenses.classList.remove("js-open");
+    inputFormCategoriesNode.classList.remove("js-open");
     addStatus();
     inputFormLimitNode.value = "";
 

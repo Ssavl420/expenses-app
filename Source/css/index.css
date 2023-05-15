@@ -121,7 +121,7 @@ body {
 .form .form__limit label {
   flex: 1 1 100%;
 }
-.form .form__limit label .__limit_input {
+.form .form__limit label .limit__input {
   padding: 0 10px;
   width: 100%;
   font-weight: 200;
@@ -131,17 +131,17 @@ body {
   border-right: none;
   border-radius: 15px 0 0 15px;
 }
-.form .form__limit label .__limit_input::-webkit-outer-spin-button, .form .form__limit label .__limit_input::-webkit-inner-spin-button {
+.form .form__limit label .limit__input::-webkit-outer-spin-button, .form .form__limit label .limit__input::-webkit-inner-spin-button {
   display: none;
   -webkit-appearance: none;
 }
-.form .form__limit label .__limit_input:-webkit-autofill {
+.form .form__limit label .limit__input:-webkit-autofill {
   font-size: 24px;
   box-shadow: inset 0 0 0 50px white;
   -webkit-box-shadow: inset 0 0 0 50px white;
   -webkit-text-fill-color: black;
 }
-.form .form__limit .__btn_limit {
+.form .form__limit .limit__btn {
   padding: 0 10px;
   width: 50px;
   background: url("../../Img/icon/done.png") center center/40px 40px no-repeat, #fff;
@@ -150,8 +150,8 @@ body {
   border-radius: 0 15px 15px 0;
   transition: all 0.3s ease;
 }
-.form .__expenses {
-  max-width: 100%;
+.form .form__expenses {
+  width: 100%;
   display: flex;
   position: absolute;
   top: 91px;
@@ -160,13 +160,15 @@ body {
   transform: translate(0, -100%);
   transition: all 0.5s ease;
 }
-.form .__expenses.js-open {
+.form .form__expenses.js-open {
   transform: translate(0, 0);
   opacity: 1;
   visibility: visible;
 }
-.form .__expenses label .__expenses_input {
+.form .form__expenses label {
   flex: 1 1 100%;
+}
+.form .form__expenses label .expenses__input {
   padding: 0 10px;
   width: 100%;
   font-weight: 200;
@@ -177,17 +179,17 @@ body {
   border-top: none;
   border-radius: 0 0 0 15px;
 }
-.form .__expenses label .__expenses_input::-webkit-outer-spin-button, .form .__expenses label .__expenses_input::-webkit-inner-spin-button {
+.form .form__expenses label .expenses__input::-webkit-outer-spin-button, .form .form__expenses label .expenses__input::-webkit-inner-spin-button {
   display: none;
   -webkit-appearance: none;
 }
-.form .__expenses label .__expenses_input:-webkit-autofill {
+.form .form__expenses label .expenses__input:-webkit-autofill {
   font-size: 24px;
   box-shadow: inset 0 0 0 50px white;
   -webkit-box-shadow: inset 0 0 0 50px white;
   -webkit-text-fill-color: black;
 }
-.form .__expenses .__btn_expenses {
+.form .form__expenses .expenses__btn {
   padding: 0 10px;
   font-weight: 400;
   font-size: 20px;
@@ -199,14 +201,14 @@ body {
   border-radius: 0 0 15px 0;
 }
 @media (max-width: 459px) {
-  .form .__expenses .__btn_expenses {
-    width: 111px;
+  .form .form__expenses .expenses__btn {
+    width: 50px;
     height: 45px;
     font-size: 0px;
-    background: url("../../Img/icon/add.png") 95% center/35px 35px no-repeat;
+    background: url("../../Img/icon/add.png") 50% center/35px 35px no-repeat;
   }
 }
-.form .category {
+.form .form__category {
   padding: 0 10px;
   width: 100%;
   height: 46px;
@@ -223,7 +225,7 @@ body {
   visibility: hidden;
   transition: all 0.5s ease;
 }
-.form .category.js-open {
+.form .form__category.js-open {
   opacity: 1;
   visibility: visible;
 }
@@ -232,19 +234,19 @@ body {
   margin: 60px 0 0 0;
   display: flex;
 }
-.data .__info {
+.data .data__info {
   flex: 0 1 65%;
 }
-.data .__info .info__limit {
+.data .data__info .info__limit {
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s ease;
 }
-.data .__info .info__limit.js-active {
+.data .data__info .info__limit.js-active {
   visibility: visible;
   opacity: 1;
 }
-.data .__info .info__limit .js-info__limit-change {
+.data .data__info .info__limit .js-info__limit-change {
   width: 23px;
   height: 23px;
   cursor: pointer;
@@ -254,14 +256,14 @@ body {
   display: inline-block;
   background: url("../../Img/icon/change.svg") center bottom/100% no-repeat;
 }
-.data .__info .info__sum,
-.data .__info .info__balance {
+.data .data__info .info__sum,
+.data .data__info .info__balance {
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s ease;
 }
-.data .__info .info__sum.js-active,
-.data .__info .info__balance.js-active {
+.data .data__info .info__sum.js-active,
+.data .data__info .info__balance.js-active {
   visibility: visible;
   opacity: 1;
 }
@@ -298,7 +300,7 @@ body {
   border-radius: 50%;
   border: 1px solid gray;
 }
-.data .__history {
+.data .data__history {
   padding: 0 0 0 20px;
   flex: 0 1 50%;
   overflow: hidden;
@@ -306,17 +308,17 @@ body {
   opacity: 0;
   transition: all 0.3s ease;
 }
-.data .__history.js-active {
+.data .data__history.js-active {
   visibility: visible;
   opacity: 1;
 }
-.data .__history ol {
+.data .data__history ol {
   font-size: 16px;
   line-height: 20px;
 }
-.data .__history h2 {
+.data .data__history h2 {
   margin: 0 0 15px 0;
 }
-.data .__history li {
+.data .data__history li {
   list-style-position: inside;
 }/*# sourceMappingURL=index.css.map */
