@@ -84,6 +84,7 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
       resetBtn.classList.remove('js-active');
 
       expenses.length = 0;
+      categories.length = 0;
 
       let expensesListHTML = '';
       let sum = 0;
