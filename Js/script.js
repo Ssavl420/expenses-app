@@ -19,7 +19,7 @@ let sum;
 let limit;
 let balanceN;
 let statusBalance;
-let categoryListHTML
+let categoryListHTML;
 
 
 // Вывод статуса
@@ -39,18 +39,10 @@ function addCategory () {
   category = inputFormCategoriesNode.value;
   categories.push(category);
   inputFormCategoriesNode.value = 'Выберите категорию:';
-
-  // thisCategory = categories.map();
-
-  // categoryListHTML = '';
-  // categories.forEach(element => {
-  //   categoryListHTML += `<p>${element}</p>`;
-  // });
-
 }
 
-
-formLimit.addEventListener('submit', function (e) {  // Функция задающая лимит трат.
+// Получение заданного лимита
+formLimit.addEventListener('submit', function (e) { 
   e.preventDefault();
   if (!inputFormLimitNode.value) {
     return;
@@ -73,14 +65,14 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
     balanceNode.innerText = (+balanceN.toFixed(2) + ' \u20bd');
     addStatus();
   }
-
+  // Фиксация категории и траты
   formExpenses.addEventListener('submit', function (e) {
     e.preventDefault();
 
     if (!inputFormExpensesNode.value) {
       return;
     } 
-
+    // Сброс истории трат
     resetBtn.addEventListener('click', function () {
       resetBtn.classList.remove('js-active');
 
@@ -142,7 +134,7 @@ formLimit.addEventListener('submit', function (e) {  // Функция зада�
     addStatus();
 
   });
-
+  // Изменение лимита.
   const limitChange = document.querySelector(".js-info__limit-change");
   limitChange.addEventListener('click', function () {
     formLimit.classList.remove("js-closed");
