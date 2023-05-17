@@ -95,7 +95,7 @@ formLimit.addEventListener('submit', function (e) {         // После наж
 });
 limitChange.addEventListener('click', changeLimit);         // После нажатия иконки "Изменение лимита" - Открывается окно ввода лимита.
 resetBtn.addEventListener('click', resetHistory);           // После нажатия кнопки "Сбросить историю" - Сброс истории трат.
-hardResetBtn.addEventListener('click', resetLS);            // После нажатия кнопки "Сбросить кэш" - Сброс localStorage.
+// hardResetBtn.addEventListener('click', resetLS);            // После нажатия кнопки "Сбросить кэш" - Сброс localStorage.
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 // Открытие формы Expenses
@@ -170,15 +170,15 @@ function resetHistory () {
   localStorage.removeItem('categories');
 }
 // Очистка localStorage
-function resetLS () {
-  hardResetBtn.classList.remove(OpenItem_CLASSNAME);
-  localStorage.clear();
-}
+// function resetLS () {
+//   hardResetBtn.classList.remove(OpenItem_CLASSNAME);
+//   localStorage.clear();
+// }
 // Открытие баланса, расхода, истории трат и кнопки сброса. 
 function openStatistics() {
   history.classList.add(OpenItem_CLASSNAME);
   resetBtn.classList.add(OpenItem_CLASSNAME);
-  hardResetBtn.classList.add(OpenItem_CLASSNAME);
+  // hardResetBtn.classList.add(OpenItem_CLASSNAME);
   // sumInfo.classList.add(OpenItem_CLASSNAME);
   // balanceInfo.classList.add(OpenItem_CLASSNAME);
 }
