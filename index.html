@@ -54,7 +54,7 @@
             </label>
             <button data-find="expensesBtn" class="expenses__btn" type="submit">Добавить</button>
          </form>
-         <select data-find="category" class="form__category" name="category" size="1">
+         <select data-find="categoryInput" class="form__category" name="category" size="1">
             <option selected disabled>Выберите категорию:</option>
             <option>Продукты</option>
             <option>Ресторан</option>
@@ -66,18 +66,18 @@
       </div>
       <div class="data">
          <div class="data__info">
-            <h2 class="info__limit">Лимит: <span data-find="limit"></span>
-               <div class="js-info__limit-change"></div>
+            <h2 data-find="infoLimit" class="info__limit">Лимит: <span data-find="limit"></span>
+               <div data-find="changeLimit" class="limit__change"></div>
             </h2>
-            <h2 class="info__balance">Баланс: <span data-find="balance"></span>
-               <div class="js-status"></div>
+            <h2 data-find="balanceInfo" class="info__balance">Баланс: <span data-find="balance"></span>
+               <div data-find="balanceStatus" class="balance__status"></div>
             </h2>
-            <h2 class="info__sum">Расход: <span data-find="sum"></span></h2>
+            <h2 data-find="sumInfo" class="info__sum">Расход: <span data-find="sum"></span></h2>
             <button data-find="resetBtn" class="reset__btn" type="submit">Сбросить историю</button>
          </div>
-         <div class="data__history">
+         <div data-find="history" class="data__history">
             <h2>История:</h2>
-            <div data-find="history"></div>
+            <div data-find="historyNode"></div>
          </div>
       </div>
    </div>

@@ -1,147 +1,221 @@
+const CURRENCY = ' \u20bd';
+const statusGood = "#29aa18";
+const statusNorm = "orange";
+const statusBad = "red";
+const notSelected = 'Выберите категорию:';
+const CloseItem_CLASSNAME = "js-closed";
+const OpenItem_CLASSNAME = "js-open";
+
+const formLimit = document.querySelector('[data-find="form-limit"]');
+const formExpenses = document.querySelector('[data-find="form-expenses"]');
+
+const limitNode = document.querySelector('[data-find="limit"]');
+const limitInfo = document.querySelector('[data-find="infoLimit"]');
+const sumInfo = document.querySelector('[data-find="sumInfo"]');
+const balanceInfo = document.querySelector('[data-find="balanceInfo"]');
+const history = document.querySelector('[data-find="history"]');
+const balanceNode = document.querySelector('[data-find="balance"]');
+const historyNode = document.querySelector('[data-find="historyNode"]');
+const sumNode = document.querySelector('[data-find="sum"]');
+
 const inputFormLimitNode = document.querySelector('[data-find="limitInput"]');
 const inputFormExpensesNode = document.querySelector('[data-find="expensesInput"]');
-const inputFormCategoriesNode = document.querySelector('[data-find="category"]');
+const inputFormCategoriesNode = document.querySelector('[data-find="categoryInput"]');
+
 const limitBtn = document.querySelector('[data-find="LimitBtn"]');
 const resetBtn = document.querySelector('[data-find="resetBtn"]');
-const historyNode = document.querySelector('[data-find="history"]');
-const formExpenses = document.querySelector('[data-find="form-expenses"]');
-const formLimit = document.querySelector('[data-find="form-limit"]');
-const sumNode = document.querySelector('[data-find="sum"]');
-const limitNode = document.querySelector('[data-find="limit"]');
-const balanceNode = document.querySelector('[data-find="balance"]');
 
+const empty = "";
+
+const limitChange = document.querySelector('[data-find="changeLimit"]');
+const statusBalance = document.querySelector('[data-find="balanceStatus"]');
 
 let expenses = [];
 let categories = [];
-let category;
-let thisCategory;
-let sum;
 let limit;
-let balanceN;
-let statusBalance;
+let sum;
+let balance;
 let categoryListHTML;
+let expensesListHTML = '';
 
+limit = localStorage.getItem('limit');
+// ------------------------------------------------------------------------------------------------------------------------------------
 
-// Вывод статуса
-function addStatus () {
-  statusBalance = document.querySelector('.js-status');
-  if (sum <= limit || sum === 0) {
-    statusBalance.style.backgroundColor = "#29aa18";
-  } if (sum >= (limit * 0.85)) {
-    statusBalance.style.backgroundColor = "orange";
-  } if (sum >= limit) {
-    statusBalance.style.backgroundColor = "red";
-  }
+if (!JSON.parse(localStorage.getItem('expenses')) == []) {
+  expenses = JSON.parse(localStorage.getItem('expenses'))
+  categories = JSON.parse(localStorage.getItem('categories'));
+  initApp();
+  getLimit();
+  calcBalance();
+  openStatistics();
+  calcExpenses(expenses);
+  showExpensesHistory()
+  showBalance();
+  getStatus();
+  formExpenses.addEventListener('submit', function (e) {  // После нажатия кнопки "Добавить" - Фиксация трат и категории 
+    e.preventDefault();
+    if (!inputFormExpensesNode.value) {
+      return;
+    }
+    createArrayExpenses();
+    getCategory();
+    openStatistics();
+    clearExpenseForm();
+    calcExpenses(expenses);
+    showExpensesHistory();
+    showBalance();
+    getStatus();
+  });
 }
 
-// Получение категории
-function addCategory () {
-  category = inputFormCategoriesNode.value;
-  categories.push(category);
-  inputFormCategoriesNode.value = 'Выберите категорию:';
-}
-
-// Получение заданного лимита
-formLimit.addEventListener('submit', function (e) { 
+// ------------------------------------------------------------------------------------------------------------------------------------
+formLimit.addEventListener('submit', function (e) {         // После нажатия кнопки "Утверждения лимита" - цепочка событий
   e.preventDefault();
   if (!inputFormLimitNode.value) {
     return;
   }
-  inputFormExpensesNode.value = "";
-  limit = +inputFormLimitNode.value.replace("," , ".");
-  formLimit.classList.add("js-closed");
-  formExpenses.classList.add("js-open");
-  inputFormCategoriesNode.classList.add("js-open");
-
-  const limInfo = document.querySelector('.info__limit');
-  limInfo.classList.add('js-active');
-
-  limitNode.innerText = (limit + ' \u20bd');
-
-  if (expenses.length === 0) {
-    balanceNode.innerText = (limit + ' \u20bd');
-  } else {
-    balanceN = limit - sum;
-    balanceNode.innerText = (+balanceN.toFixed(2) + ' \u20bd');
-    addStatus();
-  }
-  // Фиксация категории и траты
-  formExpenses.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    if (!inputFormExpensesNode.value) {
-      return;
-    } 
-    // Сброс истории трат
-    resetBtn.addEventListener('click', function () {
-      resetBtn.classList.remove('js-active');
-
-      expenses.length = 0;
-      categories.length = 0;
-
-      let expensesListHTML = '';
-      let sum = 0;
-      historyNode.innerHTML = " - ";
-      sumNode.innerText = (sum.toFixed(2) + ' \u20bd');
-      balanceNode.innerText = (limit + ' \u20bd');
-
-      statusBalance.style.backgroundColor = "#29aa18";
-    });
-    
-    const history = document.querySelector('.data__history');
-    history.classList.add('js-active');
-
-    resetBtn.classList.add('js-active');
-    
-    const sumInfo = document.querySelector('.info__sum');
-    const balanceInfo = document.querySelector('.info__balance');
-    sumInfo.classList.add('js-active');
-    balanceInfo.classList.add('js-active');
-  
-    const expense = +inputFormExpensesNode.value.replace("," , ".");
-
-    expenses.push(expense);
-    addCategory();
-    console.log(categories)
-    console.log(category)
-    
-    inputFormExpensesNode.value = '';
-  
-    let expensesListHTML = '';
-    sum = 0;
-
-    expenses.forEach(element => {
-      // expensesListHTML += `<li>${element} &#8381</li>`;
-      sum += element;
-    });
-
-    for (let i = 0; i < expenses.length; i++) {
-      if (categories[i] === 'Выберите категорию:') {
-        expensesListHTML += `<li>${expenses[i]} &#8381</li>`;
-      } else {
-        expensesListHTML += `<li>${expenses[i]} &#8381 <br> ${categories[i]}</li>`
+  getLimit();
+  initApp();
+  calcBalance();
+    formExpenses.addEventListener('submit', function (e) {  // После нажатия кнопки "Добавить" - Фиксация трат и категории 
+      e.preventDefault();
+      if (!inputFormExpensesNode.value) {
+        return;
       }
-    }
-
-    
-    historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
-  
-    sumNode.innerText = (sum.toFixed(2) + ' \u20bd');
-
-    balanceN = limit - sum;
-    balanceNode.innerText = (+balanceN.toFixed(2) + ' \u20bd');
-
-    addStatus();
-
-  });
-  // Изменение лимита.
-  const limitChange = document.querySelector(".js-info__limit-change");
-  limitChange.addEventListener('click', function () {
-    formLimit.classList.remove("js-closed");
-    formExpenses.classList.remove("js-open");
-    inputFormCategoriesNode.classList.remove("js-open");
-    addStatus();
-    inputFormLimitNode.value = "";
-
-  });
+      createArrayExpenses();
+      getCategory();
+      openStatistics();
+      clearExpenseForm();
+      calcExpenses(expenses);
+      showExpensesHistory();
+      showBalance();
+      getStatus();
+    });
 });
+limitChange.addEventListener('click', changeLimit);         // После нажатия иконки "Изменение лимита" - Открывается окно ввода лимита.
+resetBtn.addEventListener('click', resetHistory);           // После нажатия кнопки "Сбросить историю" - Сброс истории трат.
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+// Открытие формы Expenses
+function initApp () {
+  formLimit.classList.add(CloseItem_CLASSNAME);
+  formExpenses.classList.add(OpenItem_CLASSNAME);
+  inputFormCategoriesNode.classList.add(OpenItem_CLASSNAME);
+  limitInfo.classList.add(OpenItem_CLASSNAME);
+}
+// Получение лимита 
+function getLimit () {
+  if (!localStorage.getItem('limit') == 0 && inputFormLimitNode.value == 0) {
+    limit = localStorage.getItem('limit')
+  } else {
+    limit = +inputFormLimitNode.value.replace("," , ".");
+    localStorage.setItem('limit', JSON.stringify(limit));
+  }
+  inputFormExpensesNode.value = empty;
+  limitNode.innerText = (limit + CURRENCY);
+}
+// Изменение лимита
+function changeLimit () {
+  formLimit.classList.remove(CloseItem_CLASSNAME);
+  formExpenses.classList.remove(OpenItem_CLASSNAME);
+  inputFormCategoriesNode.classList.remove(OpenItem_CLASSNAME);
+  getStatus();
+  inputFormLimitNode.value = empty;
+}
+// Получение категории
+function getCategory () {
+  let category;
+  category = inputFormCategoriesNode.value;
+  categories.push(category);
+  localStorage.setItem('categories', JSON.stringify(categories));
+  inputFormCategoriesNode.value = notSelected;
+}
+// Расчет баланса
+function calcBalance () {
+  if (expenses === null || expenses.length === 0) {
+    balanceNode.innerText = (limit + CURRENCY);
+  } else {
+    balance = limit - sum;
+    balanceNode.innerText = (+balance.toFixed(2) + CURRENCY);
+  }
+  getStatus();
+}
+// Получение статуса
+function getStatus () {
+  if (sum <= limit || sum === 0) {
+    statusBalance.style.backgroundColor = statusGood;
+  } if (sum >= (limit * 0.85)) {
+    statusBalance.style.backgroundColor = statusNorm;
+  } if (sum >= limit) {
+    statusBalance.style.backgroundColor = statusBad;
+  }
+}
+// Сброс истории и local Storage
+function resetHistory () {
+  resetBtn.classList.remove(OpenItem_CLASSNAME);
+
+  expenses.length = 0;
+  categories.length = 0;
+
+  expensesListHTML = '';
+  sum = 0;
+  historyNode.innerHTML = " - ";
+  sumNode.innerText = (sum.toFixed(2) + CURRENCY);
+  balanceNode.innerText = (limit + CURRENCY);
+
+  statusBalance.style.backgroundColor = statusGood;
+  localStorage.removeItem('expenses');
+  localStorage.removeItem('categories');
+}
+// Открытие баланса, расхода, истории трат и кнопки сброса. 
+function openStatistics() {
+  history.classList.add(OpenItem_CLASSNAME);
+  resetBtn.classList.add(OpenItem_CLASSNAME);
+  // sumInfo.classList.add(OpenItem_CLASSNAME);
+  // balanceInfo.classList.add(OpenItem_CLASSNAME);
+}
+// Создать массив расходов
+function createArrayExpenses () {
+  const expense = +inputFormExpensesNode.value.replace("," , ".");
+  expenses.push(expense);
+  localStorage.setItem('expenses', JSON.stringify(expenses));
+  }
+// Вычисление суммы трат из истории Expenses
+function calcExpenses(expenses) {
+  sum = 0;
+  expenses.forEach(element => {
+  sum += element;
+})
+return sum;
+}
+// Вывод истории (массива Expenses и Categories) в HTML
+function showExpensesHistory() {
+  let expensesListHTML = '';
+  for (let i = 0; i < expenses.length; i++) {
+    if (categories[i] === notSelected) {
+      expensesListHTML += `<li>${expenses[i]} ${CURRENCY}</li>`;
+    } else {
+      expensesListHTML += `<li>${expenses[i]} ${CURRENCY} <br> ${categories[i]}</li>`
+    }
+  }
+  historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+}
+// Отчистка формы Expenses
+function clearExpenseForm () {
+  inputFormExpensesNode.value = empty;
+}
+  // Показать баланс и расходы
+  function showBalance () {
+    sumInfo.classList.add(OpenItem_CLASSNAME);
+    balanceInfo.classList.add(OpenItem_CLASSNAME);
+    sumNode.innerText = (sum.toFixed(2) + CURRENCY);
+    balance = limit - sum;
+    balanceNode.innerText = (+balance.toFixed(2) + CURRENCY);
+  }
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+

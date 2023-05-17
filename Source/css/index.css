@@ -243,11 +243,11 @@ body {
   opacity: 0;
   transition: all 0.3s ease;
 }
-.data .data__info .info__limit.js-active {
+.data .data__info .info__limit.js-open {
   visibility: visible;
   opacity: 1;
 }
-.data .data__info .info__limit .js-info__limit-change {
+.data .data__info .info__limit .limit__change {
   width: 23px;
   height: 23px;
   cursor: pointer;
@@ -263,8 +263,8 @@ body {
   opacity: 0;
   transition: all 0.3s ease;
 }
-.data .data__info .info__sum.js-active,
-.data .data__info .info__balance.js-active {
+.data .data__info .info__sum.js-open,
+.data .data__info .info__balance.js-open {
   visibility: visible;
   opacity: 1;
 }
@@ -284,14 +284,14 @@ body {
   opacity: 0;
   transition: all 0.3s ease;
 }
-.data .reset__btn.js-active {
+.data .reset__btn.js-open {
   visibility: visible;
   opacity: 1;
 }
 .data .info__balance {
   position: relative;
 }
-.data .info__balance .js-status {
+.data .info__balance .balance__status {
   display: block;
   width: 12px;
   height: 12px;
@@ -309,7 +309,7 @@ body {
   opacity: 0;
   transition: all 0.3s ease;
 }
-.data .data__history.js-active {
+.data .data__history.js-open {
   visibility: visible;
   opacity: 1;
 }

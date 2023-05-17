@@ -169,11 +169,11 @@ body {
          visibility: hidden;
          opacity: 0;
          transition: all .3s ease;
-         &.js-active {
+         &.js-open {
             visibility: visible;
             opacity: 1;
          }
-         .js-info__limit-change {
+         .limit__change {
             width: 23px;
             height: 23px;
             cursor: pointer;
@@ -189,7 +189,7 @@ body {
          visibility: hidden;
          opacity: 0;
          transition: all .3s ease;
-         &.js-active {
+         &.js-open {
             visibility: visible;
             opacity: 1;
             }
@@ -210,14 +210,14 @@ body {
          visibility: hidden;
          opacity: 0;
          transition: all .3s ease;
-         &.js-active {
+         &.js-open {
             visibility: visible;
             opacity: 1;
          }
       }
       .info__balance {
          position: relative;
-         .js-status {
+         .balance__status {
             display: block;
             width: 12px;
             height: 12px;
@@ -235,7 +235,7 @@ body {
       visibility: hidden;
       opacity: 0;
       transition: all .3s ease;
-      &.js-active {
+      &.js-open {
          visibility: visible;
          opacity: 1;
       }
