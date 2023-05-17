@@ -273,6 +273,7 @@ body {
   margin: 0 0 15px 0;
 }
 .data .reset__btn {
+  margin: 0 0 10px 0;
   width: 95%;
   background: white;
   color: black;
