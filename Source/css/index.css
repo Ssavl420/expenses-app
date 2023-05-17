@@ -200,14 +200,6 @@ body {
   border-top: none;
   border-radius: 0 0 15px 0;
 }
-@media (max-width: 459px) {
-  .form .form__expenses .expenses__btn {
-    width: 50px;
-    height: 45px;
-    font-size: 0px;
-    background: url("../../Img/icon/add.png") 50% center/35px 35px no-repeat;
-  }
-}
 .form .form__category {
   padding: 0 10px;
   width: 100%;
