@@ -260,6 +260,9 @@ body {
   opacity: 0;
   transition: all 0.3s ease;
 }
+.data .data__info .info__limit span {
+  word-break: break-all;
+}
 .data .data__info .info__limit.js-open {
   visibility: visible;
   opacity: 1;
@@ -286,6 +289,10 @@ body {
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s ease;
+}
+.data .data__info .info__sum span,
+.data .data__info .info__balance span {
+  word-break: break-all;
 }
 .data .data__info .info__sum.js-open,
 .data .data__info .info__balance.js-open {

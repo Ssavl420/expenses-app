@@ -186,6 +186,9 @@ body {
          visibility: hidden;
          opacity: 0;
          transition: all .3s ease;
+         span {
+            word-break: break-all;
+         }
          &.js-open {
             visibility: visible;
             opacity: 1;
@@ -213,6 +216,9 @@ body {
          visibility: hidden;
          opacity: 0;
          transition: all .3s ease;
+         span {
+            word-break: break-all;
+         }
          &.js-open {
             visibility: visible;
             opacity: 1;
