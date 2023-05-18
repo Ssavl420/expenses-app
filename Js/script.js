@@ -104,6 +104,7 @@ function initApp () {
   formExpenses.classList.add(OpenItem_CLASSNAME);
   inputFormCategoriesNode.classList.add(OpenItem_CLASSNAME);
   limitInfo.classList.add(OpenItem_CLASSNAME);
+  limitChange.classList.add(OpenItem_CLASSNAME);
 }
 // Получение лимита 
 function getLimit () {
@@ -203,10 +204,10 @@ function showExpensesHistory() {
     if (categories[i] === notSelected) {
       expensesListHTML += `<li>${expenses[i]} ${CURRENCY}</li>`;
     } else {
-      expensesListHTML += `<li>${expenses[i]} ${CURRENCY} <br> ${categories[i]}</li>`
+      expensesListHTML += `<li>${expenses[i]} ${CURRENCY} - ${categories[i]}</li>`
     }
   }
-  historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+  historyNode.innerHTML = `<ul>${expensesListHTML}</ul>`;
 }
 // Отчистка формы Expenses
 function clearExpenseForm () {
